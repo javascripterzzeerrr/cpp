@@ -1,0 +1,3 @@
+C:/Users/strog/CLionProjects/allocator/cmake-build-debug/CMakeFiles/allocator.dir
+C:/Users/strog/CLionProjects/allocator/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/strog/CLionProjects/allocator/cmake-build-debug/CMakeFiles/rebuild_cache.dir
