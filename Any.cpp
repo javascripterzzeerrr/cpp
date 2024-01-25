@@ -13,21 +13,33 @@ class Any
     // который можно вызвать без параметров,
     // чтобы работал следующий код:
     //    Any empty; // empty ничего не хранит
+public:
+    Any() {}
 
     // В классе Any должен быть шаблонный
     // конструктор от одного параметра, чтобы
     // можно было создавать объекты типа Any,
     // например, следующим образом:
     //    Any i(10); // i хранит значение 10
+    template <typename T>
+    explicit Any(T param)
+    {}
 
     // Не забудьте про деструктор. Все выделенные
     // ресурсы нужно освободить.
+    ~Any() {}
 
     // В классе Any также должен быть конструктор
     // копирования (вам поможет метод clone
     // интерфейса ICloneable)
+    template <typename Other>
+    Any(const Other& other) {}
+
 
     // В классе должен быть оператор присваивания и/или
+    template <typename Another>
+    Another& operator=(const Another& another) {}
+
     // шаблонный оператор присваивания, чтобы работал
     // следующий код:
     //    Any copy(i); // copy хранит 10, как и i
@@ -46,7 +58,11 @@ class Any
     //    Any empty2;
     //    int *p = empty2.cast<int>(); // p == 0
     // При реализации используйте оператор dynamic_cast.
-    //
+    template <typename castT>
+    casT* cast() {
+        return dynamic_cast<castT*>(data_);
+    }
+
     // Допустим у вас есть два наследника класса Base: Derived1
     // и Derived2. Кроме того у вас есть указать baseptr
     // типа Base*. Как проверить указывает ли этот указатель на
